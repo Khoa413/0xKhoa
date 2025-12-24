@@ -1,446 +1,682 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christmas Gifts & Lights</title>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<title>Trắc nghiệm Lịch sử 11 – Câu 1 đến 10</title>
 
-    <style>
-        body { margin: 0; overflow: hidden; background-color: #000000; font-family: 'Segoe UI', sans-serif; }
-        #canvas-container { width: 100%; height: 100vh; display: block; }
-        
-        #ui-layer {
-            position: absolute; bottom: 30px; width: 100%;
-            text-align: center; pointer-events: none; z-index: 100;
-        }
-        
-        .badge {
-            display: inline-block; background: rgba(0,0,0,0.7);
-            border: 2px solid #FFD700; color: #FFD700;
-            padding: 10px 25px; border-radius: 50px;
-            font-size: 18px; font-weight: bold; margin-bottom: 10px;
-            text-transform: uppercase; letter-spacing: 1px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-            text-shadow: 0 0 10px #FFD700;
-        }
-
-        .guide { color: #ccc; font-size: 13px; margin-bottom: 20px; text-shadow: 0 2px 4px black;}
-
-        button {
-            pointer-events: auto; cursor: pointer;
-            background: linear-gradient(to bottom, #D32F2F, #8B0000); 
-            color: #FFF; border: 2px solid #FFD700;
-            padding: 15px 50px; border-radius: 30px; 
-            font-weight: 800; font-size: 16px;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-
-        #camera-preview {
-            position: absolute; top: 15px; right: 15px;
-            width: 120px; height: 90px;
-            border: 2px solid rgba(255,0,0,0.5); 
-            transform: scaleX(-1); opacity: 0.6; border-radius: 8px;
-        }
-        
-        #error-log { display: none; position: absolute; top: 0; left: 0; color: red; background: rgba(0,0,0,0.8); z-index: 999; padding: 10px; }
-    </style>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    padding: 20px;
+}
+.question {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+.correct {
+    color: green;
+    font-weight: bold;
+}
+.wrong {
+    color: red;
+    font-weight: bold;
+}
+button {
+    padding: 12px 30px;
+    font-size: 18px;
+    cursor: pointer;
+}
+</style>
 </head>
+
 <body>
-    <div id="error-log"></div>
-    <div id="ui-layer">
-        <div id="status" class="badge">🎄 Giang Sinh An Lanh 🎄</div>
-        <div class="guide">
-            🖐 <b>Xòe:</b> Bung Quà & Đèn &nbsp;|&nbsp; 👌 <b>Pinch:</b> Xem ảnh &nbsp;|&nbsp; ✊ <b>Nắm:</b> Thu cây
-        </div>
-        <button id="btnStart" onclick="startSystem()">BẮT ĐẦU</button>
-    </div>
 
-    <div id="canvas-container"></div>
-    <video class="input_video" style="display:none"></video>
-    <canvas id="camera-preview"></canvas>
+<h1>TRẮC NGHIỆM LỊCH SỬ 11</h1>
+<h3>Câu 1 → Câu 10</h3>
 
-    <script>
-        // ==========================================
-        // 1. Vandiep
-        // ==========================================
-        const MUSIC_URL = "./audio.mp3";
-        let bgMusic = new Audio(MUSIC_URL);
-        bgMusic.loop = true; bgMusic.volume = 1.0;
+<form>
+<button type="button" onclick="shuffleQuestions()">🔀 Tráo câu hỏi</button>
+<!-- ===== CÂU 1 ===== -->
+<div class="question">
+<p><b>Câu 1.</b> Lãnh đạo các cuộc cách mạng tư sản TK XVII–XVIII không bao gồm lực lượng nào?</p>
+<label><input type="radio" name="q1" value="a"> a. Tư sản</label><br>
+<label><input type="radio" name="q1" value="b"> b. Quý tộc mới</label><br>
+<label><input type="radio" name="q1" value="c"> c. Chủ nô</label><br>
+<label><input type="radio" name="q1" value="d"> d. Công nhân</label>
+</div>
 
-        const loader = new THREE.TextureLoader();
-        const photoFiles = ['./image1.jpeg', './image2.jpeg', './image3.jpeg', './image4.jpeg', './image5.jpeg'];
-        const photoTextures = [];
-        photoFiles.forEach((f, i) => photoTextures[i] = loader.load(f));
+<!-- ===== CÂU 2 ===== -->
+<div class="question">
+<p><b>Câu 2.</b> Tiền đề quyết định thắng lợi của cách mạng tư sản là?</p>
+<label><input type="radio" name="q2" value="a"> a. Kinh tế</label><br>
+<label><input type="radio" name="q2" value="b"> b. Văn hóa</label><br>
+<label><input type="radio" name="q2" value="c"> c. Quân sự</label><br>
+<label><input type="radio" name="q2" value="d"> d. Kĩ thuật</label>
+</div>
 
-        // --- Vandiep ---
-        function createCustomTexture(type) {
-            const canvas = document.createElement('canvas');
-            canvas.width = 128; canvas.height = 128;
-            const ctx = canvas.getContext('2d');
-            const cx = 64, cy = 64;
+<!-- ===== CÂU 3 ===== -->
+<div class="question">
+<p><b>Câu 3.</b> Đặc điểm nổi bật về chính trị của Anh và Pháp trước cách mạng tư sản là?</p>
+<label><input type="radio" name="q3" value="a"> a. Tồn tại chế độ quân chủ chuyên chế</label><br>
+<label><input type="radio" name="q3" value="b"> b. Là thuộc địa</label><br>
+<label><input type="radio" name="q3" value="c"> c. CNTB phát triển</label><br>
+<label><input type="radio" name="q3" value="d"> d. Triết học Ánh sáng</label>
+</div>
 
-            if (type === 'gold_glow') {
-                // Vandiep
-                const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, 40);
-                grd.addColorStop(0, '#FFFFFF'); 
-                grd.addColorStop(0.2, '#FFFFE0'); 
-                grd.addColorStop(0.5, '#FFD700');
-                grd.addColorStop(1, 'rgba(0,0,0,0)');
-                ctx.fillStyle = grd; ctx.fillRect(0,0,128,128);
+<!-- ===== CÂU 4 ===== -->
+<div class="question">
+<p><b>Câu 4.</b> Một trong những thách thức của chủ nghĩa tư bản hiện đại là?</p>
+<label><input type="radio" name="q4" value="a"> a. Khoa học – công nghệ phát triển</label><br>
+<label><input type="radio" name="q4" value="b"> b. Nguy cơ khủng hoảng tài chính toàn cầu</label><br>
+<label><input type="radio" name="q4" value="c"> c. Năng suất lao động cao</label><br>
+<label><input type="radio" name="q4" value="d"> d. Lao động chất lượng cao</label>
+</div>
 
-            } else if (type === 'red_light') {
-                // Vandiep
-                const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, 50);
-                grd.addColorStop(0, '#FFAAAA'); 
-                grd.addColorStop(0.3, '#FF0000'); 
-                grd.addColorStop(1, 'rgba(0,0,0,0)');
-                ctx.fillStyle = grd; ctx.fillRect(0,0,128,128);
+<!-- ===== CÂU 5 ===== -->
+<div class="question">
+<p><b>Câu 5.</b> Đặc trưng của chủ nghĩa tư bản hiện đại là?</p>
+<label><input type="radio" name="q5" value="a"> a. Tư bản tài chính</label><br>
+<label><input type="radio" name="q5" value="b"> b. Các tổ chức độc quyền</label><br>
+<label><input type="radio" name="q5" value="c"> c. Cơ cấu lao động biến đổi</label><br>
+<label><input type="radio" name="q5" value="d"> d. Chia xong thuộc địa</label>
+</div>
 
-            } else if (type === 'gift_red') {
-                // Vandiep
-                ctx.fillStyle = '#D32F2F'; // Vandiep
-                ctx.fillRect(20, 20, 88, 88);
-                ctx.fillStyle = '#FFD700'; // Vandiep
-                ctx.fillRect(54, 20, 20, 88); // Vandiep
-                ctx.fillRect(20, 54, 88, 20); // Vandiep
-                // Vandiep
-                ctx.strokeStyle = "rgba(0,0,0,0.3)"; ctx.lineWidth=2; ctx.strokeRect(20,20,88,88);
-            }
-            return new THREE.CanvasTexture(canvas);
-        }
+<!-- ===== CÂU 6 ===== -->
+<div class="question">
+<p><b>Câu 6.</b> Điểm chung của việc xác lập CNTB ở châu Âu và Bắc Mĩ là?</p>
+<label><input type="radio" name="q6" value="a"> a. Thiết lập quân chủ lập hiến</label><br>
+<label><input type="radio" name="q6" value="b"> b. Thiết lập cộng hòa</label><br>
+<label><input type="radio" name="q6" value="c"> c. Lật đổ thực dân</label><br>
+<label><input type="radio" name="q6" value="d"> d. Do giai cấp tư sản lãnh đạo</label>
+</div>
 
-        const textures = {
-            gold: createCustomTexture('gold_glow'),
-            red: createCustomTexture('red_light'),
-            gift: createCustomTexture('gift_red')
-        };
+<!-- ===== CÂU 7 ===== -->
+<div class="question">
+<p><b>Câu 7.</b> Cơ sở để CNTB chuyển từ tự do cạnh tranh sang độc quyền là?</p>
+<label><input type="radio" name="q7" value="a"> a. Hợp tác kinh tế</label><br>
+<label><input type="radio" name="q7" value="b"> b. Sự phát triển của các tổ chức độc quyền</label><br>
+<label><input type="radio" name="q7" value="c"> c. Trung tâm tài chính</label><br>
+<label><input type="radio" name="q7" value="d"> d. Liên kết khu vực</label>
+</div>
 
-        // ==========================================
-        // 2. Vandiep
-        // ==========================================
-        const CONFIG = {
-            goldCount: 2000,    // Hạt vàng
-            redCount: 300,      // Số lượng đèn đỏ
-            giftCount: 150,     // Số lượng hộp quà
-            explodeRadius: 65,  
-            photoOrbitRadius: 25,
-            treeHeight: 70,
-            treeBaseRadius: 35
-        };
+<!-- ===== CÂU 8 ===== -->
+<div class="question">
+<p><b>Câu 8.</b> Liên bang Xô viết được thành lập trong bối cảnh nào?</p>
+<label><input type="radio" name="q8" value="a"> a. Mâu thuẫn dân tộc gay gắt</label><br>
+<label><input type="radio" name="q8" value="b"> b. Thống nhất chính sách</label><br>
+<label><input type="radio" name="q8" value="c"> c. Nga hoàng suy yếu</label><br>
+<label><input type="radio" name="q8" value="d"> d. Phát triển kinh tế không đồng đều</label>
+</div>
 
-        let scene, camera, renderer;
-        let groupGold, groupRed, groupGift; // Vandiep
-        let photoMeshes = [];    
-        let titleMesh, starMesh;
-        
-        let state = 'TREE'; 
-        let selectedIndex = 0;
-        let handX = 0.5;
+<!-- ===== CÂU 9 ===== -->
+<div class="question">
+<p><b>Câu 9.</b> Ngay sau năm 1917, chính quyền Xô viết ban hành?</p>
+<label><input type="radio" name="q9" value="a"> a. Sắc lệnh hòa bình và ruộng đất</label><br>
+<label><input type="radio" name="q9" value="b"> b. Công cuộc cải tổ</label><br>
+<label><input type="radio" name="q9" value="c"> c. Viện trợ quốc tế</label><br>
+<label><input type="radio" name="q9" value="d"> d. Lật đổ Nga hoàng</label>
+</div>
 
-        // ==========================================
-        // 3. Vandiep
-        // ==========================================
-        function init3D() {
-            const container = document.getElementById('canvas-container');
-            scene = new THREE.Scene();
-            scene.fog = new THREE.FogExp2(0x000000, 0.002);
+<!-- ===== CÂU 10 ===== -->
+<div class="question">
+<p><b>Câu 10.</b> Ý nghĩa KHÔNG đúng của sự ra đời Liên Xô là?</p>
+<label><input type="radio" name="q10" value="a"> a. Tăng vị thế quốc tế</label><br>
+<label><input type="radio" name="q10" value="b"> b. Cổ vũ phong trào giải phóng dân tộc</label><br>
+<label><input type="radio" name="q10" value="c"> c. Để lại bài học xây dựng nhà nước</label><br>
+<label><input type="radio" name="q10" value="d"> d. Chứng minh CN Mác – Lênin</label>
+</div>
 
-            camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
-            camera.position.z = 100;
+<!-- ===== CÂU 11 ===== -->
+<div class="question">
+<p><b>Câu 11.</b> Thắng lợi nào dẫn đến sự ra đời của nhà nước XHCN đầu tiên trên thế giới?</p>
+<label><input type="radio" name="q11" value="a"> a. Cách mạng tháng Hai</label><br>
+<label><input type="radio" name="q11" value="b"> b. Cách mạng Nga 1905–1907</label><br>
+<label><input type="radio" name="q11" value="c"> c. Công xã Pa-ri</label><br>
+<label><input type="radio" name="q11" value="d"> d. Cách mạng tháng Mười</label>
+</div>
 
-            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            container.appendChild(renderer.domElement);
+<!-- ===== CÂU 12 ===== -->
+<div class="question">
+<p><b>Câu 12.</b> Khi mới thành lập (1922), Liên bang Xô viết gồm những nước cộng hòa nào?</p>
+<label><input type="radio" name="q12" value="a"> a. Nga, Ucraina, Belarus, Ngoại Cap-ca-dơ</label><br>
+<label><input type="radio" name="q12" value="b"> b. Nga, Ba Lan, Ucraina, Belarus</label><br>
+<label><input type="radio" name="q12" value="c"> c. Nga, Hungari, Romania</label><br>
+<label><input type="radio" name="q12" value="d"> d. Nga, Tiệp Khắc, Bungari</label>
+</div>
 
-            // Vandiep
-            groupGold = createParticleSystem('gold', CONFIG.goldCount, 2.0);
-            groupRed = createParticleSystem('red', CONFIG.redCount, 3.5); // Vandiep
-            groupGift = createParticleSystem('gift', CONFIG.giftCount, 3.0); // Vandiep
+<!-- ===== CÂU 13 ===== -->
+<div class="question">
+<p><b>Câu 13.</b> Tháng 12-1975, quốc gia nào ở Đông Nam Á đi lên xây dựng CNXH?</p>
+<label><input type="radio" name="q13" value="a"> a. Việt Nam</label><br>
+<label><input type="radio" name="q13" value="b"> b. Campuchia</label><br>
+<label><input type="radio" name="q13" value="c"> c. Lào</label><br>
+<label><input type="radio" name="q13" value="d"> d. Thái Lan</label>
+</div>
 
-            createPhotos();
-            createDecorations();
-            animate();
-        }
+<!-- ===== CÂU 14 ===== -->
+<div class="question">
+<p><b>Câu 14.</b> Sự kiện mở đầu quá trình xâm lược Đông Nam Á của phương Tây là?</p>
+<label><input type="radio" name="q14" value="a"> a. Pháp đánh chiếm Việt Nam</label><br>
+<label><input type="radio" name="q14" value="b"> b. Tây Ban Nha xâm lược Phi-lip-pin</label><br>
+<label><input type="radio" name="q14" value="c"> c. Bồ Đào Nha chiếm Ma-lắc-ca</label><br>
+<label><input type="radio" name="q14" value="d"> d. Hà Lan xâm lược In-đô-nê-xi-a</label>
+</div>
 
-        function createParticleSystem(type, count, size) {
-            const pPositions = [];
-            const pExplodeTargets = [];
-            const pTreeTargets = [];
-            
-            for(let i=0; i<count; i++) {
-                // --- Vandiep ---
-                const h = Math.random() * CONFIG.treeHeight; 
-                const y = h - CONFIG.treeHeight / 2;
-                
-                // Vandiep
-                let radiusRatio = (type === 'gold') ? Math.sqrt(Math.random()) : 0.9 + Math.random()*0.1;
-                
-                const maxR = (1 - (h / CONFIG.treeHeight)) * CONFIG.treeBaseRadius;
-                const r = maxR * radiusRatio; 
-                const theta = Math.random() * Math.PI * 2;
-                
-                const tx = r * Math.cos(theta);
-                const tz = r * Math.sin(theta);
-                pTreeTargets.push(tx, y, tz);
+<!-- ===== CÂU 15 ===== -->
+<div class="question">
+<p><b>Câu 15.</b> Chính sách cai trị về văn hóa – xã hội của thực dân phương Tây ở Đông Nam Á là?</p>
+<label><input type="radio" name="q15" value="a"> a. Khai hóa văn minh</label><br>
+<label><input type="radio" name="q15" value="b"> b. Du học phương Tây</label><br>
+<label><input type="radio" name="q15" value="c"> c. Ngu dân</label><br>
+<label><input type="radio" name="q15" value="d"> d. Xây dựng hạ tầng</label>
+</div>
 
-                // --- Vandiep ---
-                const u = Math.random();
-                const v = Math.random();
-                const phi = Math.acos(2 * v - 1);
-                const lam = 2 * Math.PI * u;
-                
-                // Vandiep
-                let radMult = (type === 'gift') ? 1.2 : 1.0;
-                const rad = CONFIG.explodeRadius * Math.cbrt(Math.random()) * radMult;
+<!-- ===== CÂU 16 ===== -->
+<div class="question">
+<p><b>Câu 16.</b> Cuối thế kỉ XIX, Xiêm tiến hành cải cách trong bối cảnh nào?</p>
+<label><input type="radio" name="q16" value="a"> a. CNTB phát triển mạnh</label><br>
+<label><input type="radio" name="q16" value="b"> b. Đứng trước nguy cơ bị xâm lược</label><br>
+<label><input type="radio" name="q16" value="c"> c. Phong kiến thịnh trị</label><br>
+<label><input type="radio" name="q16" value="d"> d. Được phương Tây giúp đỡ</label>
+</div>
 
-                const ex = rad * Math.sin(phi) * Math.cos(lam);
-                const ey = rad * Math.sin(phi) * Math.sin(lam);
-                const ez = rad * Math.cos(phi);
-                pExplodeTargets.push(ex, ey, ez);
+<!-- ===== CÂU 17 ===== -->
+<div class="question">
+<p><b>Câu 17.</b> Nội dung cải cách kinh tế của Xiêm là?</p>
+<label><input type="radio" name="q17" value="a"> a. Khuyến khích phát triển công nghiệp, giao thông</label><br>
+<label><input type="radio" name="q17" value="b"> b. Chia lại ruộng đất</label><br>
+<label><input type="radio" name="q17" value="c"> c. Thực hiện tập thể hóa</label><br>
+<label><input type="radio" name="q17" value="d"> d. Xóa bỏ hoàn toàn phong kiến</label>
+</div>
 
-                // Vandiep
-                pPositions.push(tx, y, tz);
-            }
+<!-- ===== CÂU 18 ===== -->
+<div class="question">
+<p><b>Câu 18.</b> Chính sách cai trị nào của thực dân được phản ánh trong đoạn trích của Hồ Chí Minh?</p>
+<label><input type="radio" name="q18" value="a"> a. Kinh tế</label><br>
+<label><input type="radio" name="q18" value="b"> b. Văn hóa</label><br>
+<label><input type="radio" name="q18" value="c"> c. Tôn giáo</label><br>
+<label><input type="radio" name="q18" value="d"> d. Chính trị</label>
+</div>
 
-            const geo = new THREE.BufferGeometry();
-            geo.setAttribute('position', new THREE.Float32BufferAttribute(pPositions, 3));
-            geo.userData = { tree: pTreeTargets, explode: pExplodeTargets };
+<!-- ===== CÂU 19 ===== -->
+<div class="question">
+<p><b>Câu 19.</b> Tình trạng mù chữ phổ biến ở Đông Nam Á là hậu quả của chính sách nào?</p>
+<label><input type="radio" name="q19" value="a"> a. Chia để trị</label><br>
+<label><input type="radio" name="q19" value="b"> b. Tăng thuế</label><br>
+<label><input type="radio" name="q19" value="c"> c. Độc chiếm thị trường</label><br>
+<label><input type="radio" name="q19" value="d"> d. Ngu dân</label>
+</div>
 
-            const mat = new THREE.PointsMaterial({
-                size: size,
-                map: textures[type],
-                transparent: true, opacity: 1.0,
-                // Vandiep
-                blending: (type === 'gift') ? THREE.NormalBlending : THREE.AdditiveBlending, 
-                depthWrite: false,
-                sizeAttenuation: true
-            });
+<!-- ===== CÂU 20 ===== -->
+<div class="question">
+<p><b>Câu 20.</b> Thực dân phương Tây xâm lược Đông Nam Á trong bối cảnh nào?</p>
+<label><input type="radio" name="q20" value="a"> a. Chủ nghĩa tư bản phát triển mạnh</label><br>
+<label><input type="radio" name="q20" value="b"> b. Phong kiến thịnh đạt</label><br>
+<label><input type="radio" name="q20" value="c"> c. CNXH hình thành</label><br>
+<label><input type="radio" name="q20" value="d"> d. Cách mạng vô sản</label>
+</div>
 
-            const points = new THREE.Points(geo, mat);
-            scene.add(points);
-            return points;
-        }
+<!-- ===== CÂU 21 ===== -->
+<div class="question">
+<p><b>Câu 21.</b> Quốc gia nào sau đây thành lập nhà nước dân chủ nhân dân ở Đông Âu giai đoạn 1945–1949?</p>
+<label><input type="radio" name="q21" value="a"> a. Trung Quốc</label><br>
+<label><input type="radio" name="q21" value="b"> b. Ấn Độ</label><br>
+<label><input type="radio" name="q21" value="c"> c. Hà Lan</label><br>
+<label><input type="radio" name="q21" value="d"> d. Nam Tư</label>
+</div>
 
-        function createPhotos() {
-            const geo = new THREE.PlaneGeometry(8, 8);
-            const borderGeo = new THREE.PlaneGeometry(9, 9); 
-            const borderMat = new THREE.MeshBasicMaterial({ color: 0xFFD700 }); 
+<!-- ===== CÂU 22 ===== -->
+<div class="question">
+<p><b>Câu 22.</b> Mục tiêu hàng đầu của phong trào đấu tranh giành độc lập ở Đông Nam Á sau Chiến tranh thế giới thứ hai là?</p>
+<label><input type="radio" name="q22" value="a"> a. Giành độc lập dân tộc</label><br>
+<label><input type="radio" name="q22" value="b"> b. Đòi quyền dân chủ</label><br>
+<label><input type="radio" name="q22" value="c"> c. Phát triển kinh tế</label><br>
+<label><input type="radio" name="q22" value="d"> d. Xây dựng CNXH</label>
+</div>
 
-            for(let i=0; i<5; i++) {
-                const mat = new THREE.MeshBasicMaterial({ 
-                    map: photoTextures[i], side: THREE.DoubleSide 
-                });
-                const mesh = new THREE.Mesh(geo, mat);
-                const border = new THREE.Mesh(borderGeo, borderMat);
-                border.position.z = -0.1; 
-                mesh.add(border);
-                
-                mesh.visible = false;
-                mesh.scale.set(0,0,0);
-                scene.add(mesh);
-                photoMeshes.push(mesh);
-            }
-        }
+<!-- ===== CÂU 23 ===== -->
+<div class="question">
+<p><b>Câu 23.</b> Sau Chiến tranh thế giới thứ hai, nhiều nước Đông Nam Á tiến hành tái thiết đất nước nhằm?</p>
+<label><input type="radio" name="q23" value="a"> a. Khắc phục hậu quả chiến tranh</label><br>
+<label><input type="radio" name="q23" value="b"> b. Xây dựng CNXH</label><br>
+<label><input type="radio" name="q23" value="c"> c. Xóa bỏ phong kiến</label><br>
+<label><input type="radio" name="q23" value="d"> d. Công nghiệp hóa ngay</label>
+</div>
 
-        function createDecorations() {
-            // Vandiep
-            const canvas = document.createElement('canvas');
-            canvas.width = 1024; canvas.height = 256;
-            const ctx = canvas.getContext('2d');
-            ctx.font = 'bold italic 90px "Times New Roman"';
-            ctx.fillStyle = '#FFD700'; ctx.textAlign = 'center';
-            ctx.shadowColor = "#FF0000"; ctx.shadowBlur = 40; 
-            ctx.fillText("MERRY CHRISTMAS", 512, 130);
-            
-            const tex = new THREE.CanvasTexture(canvas);
-            const mat = new THREE.MeshBasicMaterial({ map: tex, transparent: true, blending: THREE.AdditiveBlending });
-            titleMesh = new THREE.Mesh(new THREE.PlaneGeometry(60, 15), mat);
-            titleMesh.position.set(0, 50, 0);
-            scene.add(titleMesh);
+<!-- ===== CÂU 24 ===== -->
+<div class="question">
+<p><b>Câu 24.</b> Năm 1959, quốc gia nào ở khu vực Mĩ Latinh đi lên xây dựng CNXH?</p>
+<label><input type="radio" name="q24" value="a"> a. Bra-xin</label><br>
+<label><input type="radio" name="q24" value="b"> b. Cu Ba</label><br>
+<label><input type="radio" name="q24" value="c"> c. Mê-hi-cô</label><br>
+<label><input type="radio" name="q24" value="d"> d. Ác-hen-ti-na</label>
+</div>
 
-            // Vandiep
-            const starCanvas = document.createElement('canvas');
-            starCanvas.width = 128; starCanvas.height = 128;
-            const sCtx = starCanvas.getContext('2d');
-            sCtx.fillStyle = "#FFFF00"; sCtx.shadowColor="#FFF"; sCtx.shadowBlur=20;
-            sCtx.beginPath();
-            const cx=64, cy=64, outer=50, inner=20;
-            for(let i=0; i<5; i++){
-                sCtx.lineTo(cx + Math.cos((18+i*72)/180*Math.PI)*outer, cy - Math.sin((18+i*72)/180*Math.PI)*outer);
-                sCtx.lineTo(cx + Math.cos((54+i*72)/180*Math.PI)*inner, cy - Math.sin((54+i*72)/180*Math.PI)*inner);
-            }
-            sCtx.closePath(); sCtx.fill();
-            const starTex = new THREE.CanvasTexture(starCanvas);
-            const starMat = new THREE.MeshBasicMaterial({ map: starTex, transparent: true, blending: THREE.AdditiveBlending });
-            starMesh = new THREE.Mesh(new THREE.PlaneGeometry(12, 12), starMat);
-            starMesh.position.set(0, CONFIG.treeHeight/2 + 2, 0);
-            scene.add(starMesh);
-        }
+<!-- ===== CÂU 25 ===== -->
+<div class="question">
+<p><b>Câu 25.</b> Năm 1945, quốc gia giành được độc lập sớm nhất ở Đông Nam Á là?</p>
+<label><input type="radio" name="q25" value="a"> a. In-đô-nê-xi-a</label><br>
+<label><input type="radio" name="q25" value="b"> b. Việt Nam</label><br>
+<label><input type="radio" name="q25" value="c"> c. Lào</label><br>
+<label><input type="radio" name="q25" value="d"> d. Cam-pu-chia</label>
+</div>
 
-        function updateParticleGroup(group, targetState, speed, handRotY, time, isBlinking) {
-            const positions = group.geometry.attributes.position.array;
-            const targetKey = (targetState === 'TREE') ? 'tree' : 'explode';
-            const targets = group.geometry.userData[(targetState === 'PHOTO') ? 'explode' : targetKey];
+<!-- ===== CÂU 26 ===== -->
+<div class="question">
+<p><b>Câu 26.</b> Nguyên nhân sâu xa gây chia rẽ cộng đồng dân cư Đông Nam Á cuối thế kỉ XIX – đầu XX là?</p>
+<label><input type="radio" name="q26" value="a"> a. Cướp ruộng đất</label><br>
+<label><input type="radio" name="q26" value="b"> b. Kinh tế chỉ huy</label><br>
+<label><input type="radio" name="q26" value="c"> c. Chính sách chia để trị</label><br>
+<label><input type="radio" name="q26" value="d"> d. Chính sách ngu dân</label>
+</div>
 
-            for(let i=0; i<positions.length; i++) {
-                positions[i] += (targets[i] - positions[i]) * speed;
-            }
-            group.geometry.attributes.position.needsUpdate = true;
-            
-            // Vandiep
-            if (targetState === 'TREE') {
-                group.rotation.y += 0.003;
-                // Vandiep
-                if(isBlinking) {
-                    // Vandiep
-                    // Vandiep
-                    const scale = 1 + Math.sin(time * 5) * 0.2;
-                    group.scale.set(scale, scale, scale);
+<!-- ===== CÂU 27 ===== -->
+<div class="question">
+<p><b>Câu 27.</b> Nhận xét đúng về chính sách văn hóa của thực dân phương Tây ở Đông Nam Á là?</p>
+<label><input type="radio" name="q27" value="a"> a. Tiến bộ, tích cực</label><br>
+<label><input type="radio" name="q27" value="b"> b. Để lại hậu quả nặng nề, lâu dài</label><br>
+<label><input type="radio" name="q27" value="c"> c. Nâng cao dân trí</label><br>
+<label><input type="radio" name="q27" value="d"> d. Giữ gìn bản sắc</label>
+</div>
+
+<!-- ===== CÂU 28 ===== -->
+<div class="question">
+<p><b>Câu 28.</b> Cuộc khởi nghĩa của nhân dân Cam-pu-chia chống Pháp (1863–1866) do ai lãnh đạo?</p>
+<label><input type="radio" name="q28" value="a"> a. Com-ma-đam</label><br>
+<label><input type="radio" name="q28" value="b"> b. Pu-com-bô</label><br>
+<label><input type="radio" name="q28" value="c"> c. A-cha Xoa</label><br>
+<label><input type="radio" name="q28" value="d"> d. Si-vô-tha</label>
+</div>
+
+<!-- ===== CÂU 29 ===== -->
+<div class="question">
+<p><b>Câu 29.</b> Cuộc khởi nghĩa tiêu biểu cho liên minh chiến đấu Việt Nam – Cam-pu-chia là?</p>
+<label><input type="radio" name="q29" value="a"> a. A-cha Xoa</label><br>
+<label><input type="radio" name="q29" value="b"> b. Si-vô-tha</label><br>
+<label><input type="radio" name="q29" value="c"> c. Pu-com-bô</label><br>
+<label><input type="radio" name="q29" value="d"> d. Pha-ca-đuốc</label>
+</div>
+
+<!-- ===== CÂU 30 ===== -->
+<div class="question">
+<p><b>Câu 30.</b> Năm 1930, quốc gia Đông Nam Á nào thành lập Đảng Cộng sản?</p>
+<label><input type="radio" name="q30" value="a"> a. Việt Nam</label><br>
+<label><input type="radio" name="q30" value="b"> b. In-đô-nê-xi-a</label><br>
+<label><input type="radio" name="q30" value="c"> c. Thái Lan</label><br>
+<label><input type="radio" name="q30" value="d"> d. Miến Điện</label>
+</div>
+<h2 id="result"></h2>
+<!-- ===== CÂU 31 ===== -->
+<div class="question">
+<p><b>Câu 31.</b> Chính sách nào của thực dân phương Tây gây chia rẽ sâu sắc các cộng đồng dân cư ở Đông Nam Á?</p>
+<label><input type="radio" name="q31" value="a"> a. Ngu dân</label><br>
+<label><input type="radio" name="q31" value="b"> b. Cướp ruộng đất</label><br>
+<label><input type="radio" name="q31" value="c"> c. Chia để trị</label><br>
+<label><input type="radio" name="q31" value="d"> d. Đồng hóa văn hóa</label>
+</div>
+
+<!-- ===== CÂU 32 ===== -->
+<div class="question">
+<p><b>Câu 32.</b> Nội dung nào sau đây KHÔNG phải là ý nghĩa của Cương lĩnh năm 1991?</p>
+<label><input type="radio" name="q32" value="a"> a. Hoàn thành mục tiêu CNXH</label><br>
+<label><input type="radio" name="q32" value="b"> b. Định hướng con đường đi lên CNXH</label><br>
+<label><input type="radio" name="q32" value="c"> c. Đề ra nguyên tắc quá độ</label><br>
+<label><input type="radio" name="q32" value="d"> d. Xác định đặc trưng của xã hội XHCN</label>
+</div>
+
+<!-- ===== CÂU 33 ===== -->
+<div class="question">
+<p><b>Câu 33.</b> Trong các thế kỉ XVI–XIX, nhân dân Phi-lip-pin chủ yếu đấu tranh chống lại ách thống trị của thực dân nào?</p>
+<label><input type="radio" name="q33" value="a"> a. Bồ Đào Nha</label><br>
+<label><input type="radio" name="q33" value="b"> b. Hà Lan</label><br>
+<label><input type="radio" name="q33" value="c"> c. Tây Ban Nha</label><br>
+<label><input type="radio" name="q33" value="d"> d. Mĩ</label>
+</div>
+
+<!-- ===== CÂU 34 ===== -->
+<div class="question">
+<p><b>Câu 34.</b> Đầu thế kỉ XX, Xiêm là quốc gia như thế nào?</p>
+<label><input type="radio" name="q34" value="a"> a. Thuộc địa của phương Tây</label><br>
+<label><input type="radio" name="q34" value="b"> b. Độc lập nhưng lệ thuộc</label><br>
+<label><input type="radio" name="q34" value="c"> c. Công nghiệp phát triển</label><br>
+<label><input type="radio" name="q34" value="d"> d. Quân sự hùng mạnh</label>
+</div>
+
+<!-- ===== CÂU 35 ===== -->
+<div class="question">
+<p><b>Câu 35.</b> Năm 1858, thực dân Pháp tiến hành xâm lược Việt Nam bằng chiến lược nào?</p>
+<label><input type="radio" name="q35" value="a"> a. Đánh nhanh thắng nhanh</label><br>
+<label><input type="radio" name="q35" value="b"> b. Chiến tranh tổng lực</label><br>
+<label><input type="radio" name="q35" value="c"> c. Tràn ngập lãnh thổ</label><br>
+<label><input type="radio" name="q35" value="d"> d. Chinh phục từng gói nhỏ</label>
+</div>
+
+<!-- ===== CÂU 36 ===== -->
+<div class="question">
+<p><b>Câu 36.</b> Nguyên nhân nào sau đây KHÔNG làm cho Đông Nam Á trở thành khu vực hấp dẫn đối với các nước tư bản phương Tây?</p>
+<label><input type="radio" name="q36" value="a"> a. Nguồn nhân công dồi dào</label><br>
+<label><input type="radio" name="q36" value="b"> b. Giàu tài nguyên thiên nhiên</label><br>
+<label><input type="radio" name="q36" value="c"> c. Thị trường tiêu thụ rộng lớn</label><br>
+<label><input type="radio" name="q36" value="d"> d. Gia vị, hương liệu phong phú</label>
+</div>
+
+<!-- ===== CÂU 37 ===== -->
+<div class="question">
+<p><b>Câu 37.</b> Nội dung nào sau đây KHÔNG phải là mục tiêu của các cuộc cách mạng tư sản?</p>
+<label><input type="radio" name="q37" value="a"> a. Lật đổ chế độ phong kiến</label><br>
+<label><input type="radio" name="q37" value="b"> b. Thiết lập chính quyền tư sản</label><br>
+<label><input type="radio" name="q37" value="c"> c. Phát triển chủ nghĩa tư bản</label><br>
+<label><input type="radio" name="q37" value="d"> d. Xác lập chủ nghĩa xã hội</label>
+</div>
+
+<!-- ===== CÂU 38 ===== -->
+<div class="question">
+<p><b>Câu 38.</b> Chính quyền được thiết lập ở Nga sau thắng lợi của Cách mạng tháng Mười năm 1917 là?</p>
+<label><input type="radio" name="q38" value="a"> a. Chính phủ tư sản</label><br>
+<label><input type="radio" name="q38" value="b"> b. Chính phủ dân chủ tư sản</label><br>
+<label><input type="radio" name="q38" value="c"> c. Chính quyền Xô viết công – nông – binh</label><br>
+<label><input type="radio" name="q38" value="d"> d. Chế độ quân chủ lập hiến</label>
+</div>
+
+<!-- ===== CÂU 39 ===== -->
+<div class="question">
+<p><b>Câu 39.</b> Nội dung nào sau đây KHÔNG phải là đặc điểm của công nghiệp hóa ở các nước ASEAN?</p>
+<label><input type="radio" name="q39" value="a"> a. Thu hút vốn đầu tư nước ngoài</label><br>
+<label><input type="radio" name="q39" value="b"> b. Đẩy mạnh xuất khẩu</label><br>
+<label><input type="radio" name="q39" value="c"> c. Mở cửa nền kinh tế</label><br>
+<label><input type="radio" name="q39" value="d"> d. Giải quyết triệt để vấn đề sắc tộc</label>
+</div>
+
+<!-- ===== CÂU 40 ===== -->
+<div class="question">
+<p><b>Câu 40.</b> Chủ nghĩa tư bản hiện đại là giai đoạn phát triển của chủ nghĩa tư bản từ sau sự kiện nào?</p>
+<label><input type="radio" name="q40" value="a"> a. Chiến tranh thế giới thứ hai</label><br>
+<label><input type="radio" name="q40" value="b"> b. Chiến tranh thế giới thứ nhất</label><br>
+<label><input type="radio" name="q40" value="c"> c. Cách mạng tháng Mười Nga</label><br>
+<label><input type="radio" name="q40" value="d"> d. Khủng hoảng kinh tế 1929–1933</label>
+</div>
+
+<!-- ===== CÂU 41 ===== -->
+<div class="question">
+<p><b>Câu 41.</b> Nhiệm vụ chủ yếu của các nước Đông Âu trong giai đoạn 1950 – 1970 là?</p>
+<label><input type="radio" name="q41" value="a"> a. Đánh bại chủ nghĩa phát xít</label><br>
+<label><input type="radio" name="q41" value="b"> b. Lật đổ chế độ quân chủ</label><br>
+<label><input type="radio" name="q41" value="c"> c. Xây dựng chủ nghĩa xã hội</label><br>
+<label><input type="radio" name="q41" value="d"> d. Chống chủ nghĩa thực dân</label>
+</div>
+
+<!-- ===== CÂU 42 ===== -->
+<div class="question">
+<p><b>Câu 42.</b> Điểm chung của phong trào đấu tranh chống thực dân ở Việt Nam, Lào, Cam-pu-chia cuối thế kỉ XIX là?</p>
+<label><input type="radio" name="q42" value="a"> a. Theo khuynh hướng tư sản</label><br>
+<label><input type="radio" name="q42" value="b"> b. Theo khuynh hướng vô sản</label><br>
+<label><input type="radio" name="q42" value="c"> c. Theo khuynh hướng phong kiến</label><br>
+<label><input type="radio" name="q42" value="d"> d. Giành thắng lợi hoàn toàn</label>
+</div>
+
+<!-- ===== CÂU 43 ===== -->
+<div class="question">
+<p><b>Câu 43.</b> Quốc gia nào ở khu vực Mĩ Latinh đi theo con đường xã hội chủ nghĩa?</p>
+<label><input type="radio" name="q43" value="a"> a. Bra-xin</label><br>
+<label><input type="radio" name="q43" value="b"> b. Mê-hi-cô</label><br>
+<label><input type="radio" name="q43" value="c"> c. Ác-hen-ti-na</label><br>
+<label><input type="radio" name="q43" value="d"> d. Cu Ba</label>
+</div>
+
+<!-- ===== CÂU 44 ===== -->
+<div class="question">
+<p><b>Câu 44.</b> Hậu quả nghiêm trọng nhất của sự sụp đổ CNXH ở Liên Xô và Đông Âu là?</p>
+<label><input type="radio" name="q44" value="a"> a. Trật tự hai cực tan rã</label><br>
+<label><input type="radio" name="q44" value="b"> b. Kinh tế Nga suy giảm</label><br>
+<label><input type="radio" name="q44" value="c"> c. CNXH không còn tồn tại ở khu vực này</label><br>
+<label><input type="radio" name="q44" value="d"> d. Mĩ thiết lập trật tự đơn cực</label>
+</div>
+
+<!-- ===== CÂU 45 ===== -->
+<div class="question">
+<p><b>Câu 45.</b> Sau Chiến tranh thế giới thứ nhất, phong trào đấu tranh ở Đông Nam Á có điểm mới là?</p>
+<label><input type="radio" name="q45" value="a"> a. Xuất hiện hai khuynh hướng tư sản và vô sản</label><br>
+<label><input type="radio" name="q45" value="b"> b. Chỉ còn khuynh hướng phong kiến</label><br>
+<label><input type="radio" name="q45" value="c"> c. Phong trào hoàn toàn thất bại</label><br>
+<label><input type="radio" name="q45" value="d"> d. Giành độc lập ngay lập tức</label>
+</div>
+
+<!-- ===== CÂU 46 ===== -->
+<div class="question">
+<p><b>Câu 46.</b> Lực lượng tham gia Cách mạng tư sản Pháp cuối thế kỉ XVIII bao gồm?</p>
+<label><input type="radio" name="q46" value="a"> a. Quý tộc và tăng lữ</label><br>
+<label><input type="radio" name="q46" value="b"> b. Tư sản và quý tộc</label><br>
+<label><input type="radio" name="q46" value="c"> c. Tư sản, nông dân và bình dân thành thị</label><br>
+<label><input type="radio" name="q46" value="d"> d. Vua và quan lại</label>
+</div>
+
+<!-- ===== CÂU 47 ===== -->
+<div class="question">
+<p><b>Câu 47.</b> Sau Chiến tranh Mĩ – Tây Ban Nha năm 1898, Phi-lip-pin trở thành thuộc địa của?</p>
+<label><input type="radio" name="q47" value="a"> a. Tây Ban Nha</label><br>
+<label><input type="radio" name="q47" value="b"> b. Pháp</label><br>
+<label><input type="radio" name="q47" value="c"> c. Mĩ</label><br>
+<label><input type="radio" name="q47" value="d"> d. Bồ Đào Nha</label>
+</div>
+
+<!-- ===== CÂU 48 ===== -->
+<div class="question">
+<p><b>Câu 48.</b> Trước Chiến tranh thế giới thứ hai, phong trào đấu tranh giải phóng dân tộc ở Đông Nam Á?</p>
+<label><input type="radio" name="q48" value="a"> a. Đã giành thắng lợi hoàn toàn</label><br>
+<label><input type="radio" name="q48" value="b"> b. Chưa giành được thắng lợi</label><br>
+<label><input type="radio" name="q48" value="c"> c. Thắng lợi ở tất cả các nước</label><br>
+<label><input type="radio" name="q48" value="d"> d. Không diễn ra</label>
+</div>
+
+<!-- ===== CÂU 49 ===== -->
+<div class="question">
+<p><b>Câu 49.</b> Khó khăn lớn nhất của quốc gia Ti-mo Lét-xte sau khi giành độc lập là?</p>
+<label><input type="radio" name="q49" value="a"> a. Xung đột phe phái, bất ổn chính trị</label><br>
+<label><input type="radio" name="q49" value="b"> b. Bị bao vây kinh tế</label><br>
+<label><input type="radio" name="q49" value="c"> c. Trình độ dân trí thấp</label><br>
+<label><input type="radio" name="q49" value="d"> d. Thiếu tài nguyên</label>
+</div>
+
+<!-- ===== CÂU 50 ===== -->
+<div class="question">
+<p><b>Câu 50.</b> Nhận định nào sau đây đúng về quá trình xác lập chủ nghĩa tư bản ở châu Âu và Bắc Mĩ?</p>
+<label><input type="radio" name="q50" value="a"> a. Hầu hết các cuộc cách mạng tư sản đều giành thắng lợi</label><br>
+<label><input type="radio" name="q50" value="b"> b. Tất cả đều thất bại</label><br>
+<label><input type="radio" name="q50" value="c"> c. Gắn liền với giải phóng dân tộc</label><br>
+<label><input type="radio" name="q50" value="d"> d. Diễn ra hoàn toàn hòa bình</label>
+</div>
+
+<!-- ===== CÂU 51 ===== -->
+<div class="question">
+<p><b>Câu 51.</b> Nước cộng hòa đầu tiên tham gia thành lập Liên bang Xô viết năm 1922 là?</p>
+<label><input type="radio" name="q51" value="a"> a. Nga</label><br>
+<label><input type="radio" name="q51" value="b"> b. U-crai-na</label><br>
+<label><input type="radio" name="q51" value="c"> c. Bê-lô-rút-xi-a</label><br>
+<label><input type="radio" name="q51" value="d"> d. Ngoại Cap-ca-dơ</label>
+</div>
+
+<!-- ===== CÂU 52 ===== -->
+<div class="question">
+<p><b>Câu 52.</b> Quốc gia mở đầu quá trình xâm lược Đông Nam Á của chủ nghĩa thực dân phương Tây là?</p>
+<label><input type="radio" name="q52" value="a"> a. Tây Ban Nha</label><br>
+<label><input type="radio" name="q52" value="b"> b. Hà Lan</label><br>
+<label><input type="radio" name="q52" value="c"> c. Anh</label><br>
+<label><input type="radio" name="q52" value="d"> d. Bồ Đào Nha</label>
+</div>
+
+<!-- ===== CÂU 53 ===== -->
+<div class="question">
+<p><b>Câu 53.</b> Cách mạng tháng Mười Nga năm 1917 có ý nghĩa quốc tế to lớn vì?</p>
+<label><input type="radio" name="q53" value="a"> a. Nhân dân Nga làm chủ đất nước</label><br>
+<label><input type="radio" name="q53" value="b"> b. Thúc đẩy phong trào công nhân quốc tế</label><br>
+<label><input type="radio" name="q53" value="c"> c. Chủ nghĩa tư bản không còn là hệ thống duy nhất</label><br>
+<label><input type="radio" name="q53" value="d"> d. Để lại nhiều bài học đấu tranh</label>
+</div>
+
+<!-- ===== CÂU 54 ===== -->
+<div class="question">
+<p><b>Câu 54.</b> Nguyên tắc nào sau đây KHÔNG phải là nguyên tắc tổ chức của Liên bang Xô viết?</p>
+<label><input type="radio" name="q54" value="a"> a. Bình đẳng giữa các dân tộc</label><br>
+<label><input type="radio" name="q54" value="b"> b. Quyền tự quyết của các dân tộc</label><br>
+<label><input type="radio" name="q54" value="c"> c. Giúp đỡ lẫn nhau</label><br>
+<label><input type="radio" name="q54" value="d"> d. Mở rộng quan hệ với phương Tây</label>
+</div>
+
+<!-- ===== CÂU 55 ===== -->
+<div class="question">
+<p><b>Câu 55.</b> Cuối thế kỉ XVI, Hà Lan xâm lược và đặt ách thống trị ở quốc gia nào tại Đông Nam Á?</p>
+<label><input type="radio" name="q55" value="a"> a. Ma-lai-xi-a</label><br>
+<label><input type="radio" name="q55" value="b"> b. Phi-lip-pin</label><br>
+<label><input type="radio" name="q55" value="c"> c. In-đô-nê-xi-a</label><br>
+<label><input type="radio" name="q55" value="d"> d. Miến Điện</label>
+</div>
+
+<!-- ===== CÂU 56 ===== -->
+<div class="question">
+<p><b>Câu 56.</b> Cuộc khởi nghĩa tiêu biểu của nhân dân Cam-pu-chia chống thực dân Pháp cuối thế kỉ XIX là?</p>
+<label><input type="radio" name="q56" value="a"> a. Khởi nghĩa Com-ma-đam</label><br>
+<label><input type="radio" name="q56" value="b"> b. Khởi nghĩa Nô-rô-đôm</label><br>
+<label><input type="radio" name="q56" value="c"> c. Khởi nghĩa Ri-đan</label><br>
+<label><input type="radio" name="q56" value="d"> d. Khởi nghĩa Si-vô-tha</label>
+</div>
+
+<!-- ===== CÂU 57 ===== -->
+<div class="question">
+<p><b>Câu 57.</b> Thắng lợi của nhân dân Đông Dương trong cuộc kháng chiến chống Mĩ đã?</p>
+<label><input type="radio" name="q57" value="a"> a. Bảo vệ thành quả Cách mạng tháng Tám</label><br>
+<label><input type="radio" name="q57" value="b"> b. Chấm dứt hoàn toàn chủ nghĩa đế quốc</label><br>
+<label><input type="radio" name="q57" value="c"> c. Góp phần làm tan rã hệ thống thuộc địa của chủ nghĩa thực dân</label><br>
+<label><input type="radio" name="q57" value="d"> d. Xóa bỏ trật tự hai cực thế giới</label>
+</div>
+
+<!-- ===== CÂU 58 ===== -->
+<div class="question">
+<p><b>Câu 58.</b> Chính sách văn hóa ngoại lai của thực dân phương Tây để lại hậu quả tiêu cực chủ yếu vì?</p>
+<label><input type="radio" name="q58" value="a"> a. Cản trở sự phát triển các giá trị văn hóa truyền thống</label><br>
+<label><input type="radio" name="q58" value="b"> b. Làm phong phú văn hóa bản địa</label><br>
+<label><input type="radio" name="q58" value="c"> c. Giúp hội nhập quốc tế</label><br>
+<label><input type="radio" name="q58" value="d"> d. Nâng cao dân trí nhanh chóng</label>
+</div>
+
+<!-- ===== CÂU 59 ===== -->
+<div class="question">
+<p><b>Câu 59.</b> Thực dân Pháp phải mất 26 năm (1858–1884) để hoàn thành việc xâm lược Việt Nam chủ yếu vì?</p>
+<label><input type="radio" name="q59" value="a"> a. Thiếu tiềm lực quân sự</label><br>
+<label><input type="radio" name="q59" value="b"> b. Nhân dân Việt Nam kháng chiến quyết liệt</label><br>
+<label><input type="radio" name="q59" value="c"> c. Địa hình phức tạp</label><br>
+<label><input type="radio" name="q59" value="d"> d. Phải xâm lược nhiều nước cùng lúc</label>
+</div>
+
+<!-- ===== CÂU 60 ===== -->
+<div class="question">
+<p><b>Câu 60.</b> Đông Nam Á được coi là “vựa lúa của thế giới” nhưng nhiều nước vẫn thiếu lương thực do?</p>
+<label><input type="radio" name="q60" value="a"> a. Nền nông nghiệp lạc hậu, phụ thuộc</label><br>
+<label><input type="radio" name="q60" value="b"> b. Không chú trọng xuất khẩu</label><br>
+<label><input type="radio" name="q60" value="c"> c. Thiếu lao động nông nghiệp</label><br>
+<label><input type="radio" name="q60" value="d"> d. Khí hậu không thuận lợi</label>
+<button type="button" onclick="check()">SUBMIT</button>
+</form>
+</div>
+<script>
+function check() {
+    let score = 0;
+
+    const answers = {
+        q1:"d", q2:"a", q3:"a", q4:"b", q5:"c",
+        q6:"d", q7:"b", q8:"d", q9:"a", q10:"a",q11:"d",
+q12:"a",
+q13:"c",
+q14:"c",
+q15:"c",
+q16:"b",
+q17:"a",
+q18:"d",
+q19:"d",
+q20:"a",
+q21:"d",
+q22:"a",
+q23:"a",
+q24:"b",
+q25:"a",
+q26:"c",
+q27:"b",
+q28:"c",
+q29:"c",
+q30:"a",
+q31:"c",
+q32:"a",
+q33:"c",
+q34:"b",
+q35:"c",
+q36:"a",
+q37:"d",
+q38:"c",
+q39:"d",
+q40:"a",
+q41:"c",
+q42:"c",
+q43:"d",
+q44:"c",
+q45:"a",
+q46:"c",
+q47:"c",
+q48:"b",
+q49:"a",
+q50:"a",
+q51:"a",
+q52:"d",
+q53:"c",
+q54:"d",
+q55:"c",
+q56:"d",
+q57:"c",
+q58:"a",
+q59:"b",
+q60:"a",
+    };
+
+    for (let q in answers) {
+        let options = document.getElementsByName(q);
+        for (let i = 0; i < options.length; i++) {
+            let label = options[i].parentElement;
+            label.classList.remove("correct", "wrong");
+
+            if (options[i].checked) {
+                if (options[i].value === answers[q]) {
+                    label.classList.add("correct");
+                    score++;
                 } else {
-                    group.scale.set(1,1,1);
+                    label.classList.add("wrong");
                 }
-            } else {
-                group.scale.set(1,1,1);
-                group.rotation.y += (handRotY - group.rotation.y) * 0.05;
+            }
+            if (options[i].value === answers[q]) {
+                label.classList.add("correct");
             }
         }
+    }
 
-        function animate() {
-            requestAnimationFrame(animate);
-            const time = Date.now() * 0.001;
-            const speed = 0.06;
-            const handRotY = (handX - 0.5) * 2.5;
+    document.getElementById("result").innerHTML =
+        "✅ Bạn làm đúng <b>" + score + " / 10</b> câu";
+}
+function shuffleQuestions() {
+    const form = document.querySelector("form");
+    const questions = Array.from(document.querySelectorAll(".question"));
 
-            // Vandiep
-            updateParticleGroup(groupGold, state, speed, handRotY, time, false);
-            updateParticleGroup(groupRed, state, speed, handRotY, time, true); // Vandiep
-            updateParticleGroup(groupGift, state, speed, handRotY, time, false);
+    // Fisher–Yates shuffle
+    for (let i = questions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [questions[i], questions[j]] = [questions[j], questions[i]];
+    }
 
-            // Vandiep
-            photoMeshes.forEach((mesh, i) => {
-                if(!mesh.material.map && photoTextures[i]) {
-                    mesh.material.map = photoTextures[i]; mesh.material.needsUpdate = true;
-                }
-            });
+    // Gắn lại vào form (giữ nguyên radio + đáp án)
+    questions.forEach(q => form.insertBefore(q, form.lastElementChild));
 
-            if (state === 'TREE') {
-                titleMesh.visible = true; starMesh.visible = true;
-                titleMesh.scale.lerp(new THREE.Vector3(1,1,1), 0.1);
-                starMesh.rotation.z -= 0.02;
-                photoMeshes.forEach(m => { m.scale.lerp(new THREE.Vector3(0,0,0), 0.1); m.visible = false; });
+    alert("✅ Đã tráo thứ tự câu hỏi!");
+}
+</script>
 
-            } else if (state === 'EXPLODE') {
-                titleMesh.visible = false; starMesh.visible = false;
-                
-                const baseAngle = groupGold.rotation.y; 
-                const angleStep = (Math.PI * 2) / 5;
-                let bestIdx = 0; let maxZ = -999;
-
-                photoMeshes.forEach((mesh, i) => {
-                    mesh.visible = true;
-                    const angle = baseAngle + i * angleStep;
-                    const x = Math.sin(angle) * CONFIG.photoOrbitRadius;
-                    const z = Math.cos(angle) * CONFIG.photoOrbitRadius;
-                    const y = Math.sin(time + i) * 3; 
-
-                    mesh.position.lerp(new THREE.Vector3(x, y, z), 0.1);
-                    mesh.lookAt(camera.position);
-
-                    if (z > maxZ) { maxZ = z; bestIdx = i; }
-                    
-                    if (z > 5) { 
-                        const distScale = 1.0 + (z / CONFIG.photoOrbitRadius) * 0.8; 
-                        mesh.scale.lerp(new THREE.Vector3(distScale, distScale, distScale), 0.1);
-                    } else {
-                        mesh.scale.lerp(new THREE.Vector3(0.6, 0.6, 0.6), 0.1);
-                    }
-                });
-                selectedIndex = bestIdx;
-
-            } else if (state === 'PHOTO') {
-                photoMeshes.forEach((mesh, i) => {
-                    if (i === selectedIndex) {
-                        mesh.position.lerp(new THREE.Vector3(0, 0, 60), 0.1);
-                        mesh.scale.lerp(new THREE.Vector3(5, 5, 5), 0.1);
-                        mesh.lookAt(camera.position);
-                        mesh.rotation.z = 0;
-                    } else {
-                        mesh.scale.lerp(new THREE.Vector3(0,0,0), 0.1);
-                    }
-                });
-            }
-
-            renderer.render(scene, camera);
-        }
-
-        // ==========================================
-        // 4. Vandiep
-        // ==========================================
-        function startSystem() {
-            document.getElementById('btnStart').style.display = 'none';
-            bgMusic.play().catch(e => console.log(e));
-            init3D();
-
-            const video = document.getElementsByClassName('input_video')[0];
-            const canvas = document.getElementById('camera-preview');
-            const ctx = canvas.getContext('2d');
-            const statusDiv = document.getElementById('status');
-            
-            let frameCnt = 0;
-            const hands = new Hands({locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`});
-            hands.setOptions({ maxNumHands: 1, modelComplexity: 0, minDetectionConfidence: 0.5, minTrackingConfidence: 0.5 });
-
-            hands.onResults(results => {
-                ctx.clearRect(0,0,100,75); ctx.drawImage(results.image, 0, 0, 100, 75);
-
-                if(results.multiHandLandmarks.length > 0) {
-                    const lm = results.multiHandLandmarks[0];
-                    handX = lm[9].x; 
-
-                    const tips = [8,12,16,20];
-                    const wrist = lm[0];
-                    let openDist = 0;
-                    tips.forEach(i => openDist += Math.hypot(lm[i].x-wrist.x, lm[i].y-wrist.y));
-                    const avgDist = openDist / 4;
-                    const pinchDist = Math.hypot(lm[4].x-lm[8].x, lm[4].y-lm[8].y);
-
-                    if (avgDist < 0.25) { 
-                        state = 'TREE'; 
-                        statusDiv.innerText = "✊ Thu Cây Thông"; statusDiv.style.color = "#FFD700";
-                    } else if (pinchDist < 0.05) {
-                        state = 'PHOTO';
-                        statusDiv.innerText = "👌 Xem Ảnh"; statusDiv.style.color = "#00FFFF";
-                    } else {
-                        state = 'EXPLODE'; 
-                        statusDiv.innerText = "🖐 Bung Quà & Ảnh"; statusDiv.style.color = "#FFA500";
-                    }
-                } else {
-                    state = 'TREE'; 
-                    statusDiv.innerText = "🎄 Giang Sinh An Lanh 🎄"; statusDiv.style.color = "#FFF";
-                }
-            });
-
-            const cameraUtils = new Camera(video, {
-                onFrame: async () => {
-                    frameCnt++; if(frameCnt%3 !== 0) return; 
-                    await hands.send({image: video});
-                }, width: 320, height: 240
-            });
-            cameraUtils.start();
-        }
-
-        window.addEventListener('resize', () => {
-            if(camera) { camera.aspect = window.innerWidth/window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); }
-        });
-        function logError(e) { document.getElementById('error-log').style.display='block'; document.getElementById('error-log').innerText+=e+"\n"; }
-    </script>
 </body>
 </html>
